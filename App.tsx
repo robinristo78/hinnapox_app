@@ -10,7 +10,7 @@ export default function App() {
   return (
     <View className='flex-1 bg-white'>
       <ScreenContent title="Home" path="App.tsx"></ScreenContent>
-      <StatusBar style="auto" />
+      <StatusBar style="auto" animated />
       <NavBar />
     </View>
   );
