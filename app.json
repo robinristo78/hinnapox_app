@@ -3,6 +3,7 @@
     "name": "hinnapox_app",
     "slug": "hinnapox_app",
     "version": "1.0.0",
+    "scheme": "hinnapox",
 
     "web": {
       "favicon": "./assets/icon.png"
@@ -11,8 +12,6 @@
     "experiments": {
       "tsconfigPaths": true
     },
-
-    "plugins": [],
 
     "orientation": "portrait",
     "icon": "./assets/icon.png",
