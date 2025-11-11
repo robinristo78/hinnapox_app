@@ -1,6 +1,7 @@
 import React from "react";
 import { View, TouchableOpacity} from 'react-native';
 import { router, usePathname } from 'expo-router';
+import { SvgProps } from "react-native-svg";
 
 //SVG import
 import HomeIcon from 'assets/icons/Home.svg';
@@ -11,10 +12,10 @@ import MapIcon from 'assets/icons/Map.svg';
 type NavItem = {
   key: string;
   route: string;
-  Icon: React.FC<React.SVGProps<SVGSVGElement>>;
+  Icon: React.FC<SvgProps>;
 };
 
-const navItems = [
+const navItems: NavItem[] = [
     {key: 'home', route: '/home', Icon: HomeIcon},
     {key: 'fuel', route: '/fuel', Icon: FuelIcon},
     {key: 'electricity', route: '/electricity', Icon: ElectricIcon},
@@ -37,8 +38,8 @@ export default function NavBar() {
                             className="items-center"
                         >
                             <Icon
-                                width={24}
-                                height={24}
+                                width={44}
+                                height={44}
                                 fill={isActive ? "#64AEF0" : "#9A8C8C"}
                             />
                         </TouchableOpacity>
