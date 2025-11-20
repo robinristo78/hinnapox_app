@@ -1,6 +1,12 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
+export type FuelType = "95" | "98" | "D" | "EL";
+
+interface PriceCardProps {
+  fuel: FuelType;
+}
+
 const FuelColorsMap: Record<string, string> = {
   '95': 'bg-green-400 text-black',
   '98': 'bg-green-400 text-black',
@@ -15,8 +21,8 @@ const FuelMap: Record<string, string> = {
   EL: 'Elekter',
 };
 
-const PriceCard = () => {
-  const [fuelType] = React.useState('95');
+const PriceCard = ({ fuel }: PriceCardProps) => {
+  const [fuelType] = React.useState(fuel);
   const [price] = React.useState(19.99);
 
   return (
@@ -29,7 +35,7 @@ const PriceCard = () => {
         <Text className="text-md text-gray-600">Hetkehind</Text>
       </View>
       <View className={`flex-col justify-center rounded-lg ${FuelColorsMap[fuelType]} px-4 py-2`}>
-        <Text className="m-0 text-5xl font-bold">{fuelType}</Text>
+        <Text className={`m-0 text-5xl font-bold ${FuelColorsMap[fuelType]}`}>{fuelType}</Text>
       </View>
     </View>
   );
