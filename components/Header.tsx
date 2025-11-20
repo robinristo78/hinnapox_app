@@ -6,11 +6,11 @@ import { useRouter, usePathname } from 'expo-router';
 import SettingIcon from 'assets/icons/Setting.svg';
 
 const pathTitles: { [key: string]: string } = {
-  '/': 'Home',
-  '/fuel': 'Fuel Prices',
-  '/electricity': 'Electricity Prices',
-  '/map': 'Map',
-  '/settings': 'Settings',
+  '/': 'Kodu',
+  '/fuel': 'Kütuse Hinnad',
+  '/electricity': 'Elektri Hinnad',
+  '/map': 'Kaart',
+  '/settings': 'Seaded',
 };
 
 const Header = () => {
