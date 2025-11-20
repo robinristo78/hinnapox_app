@@ -43,7 +43,7 @@ const PriceCard = ({ fuel }: PriceCardProps) => {
 
 const styles = {
   container:
-    'flex-row justify-between items-center p-2 px-4 bg-white rounded-2xl shadow-md w-[90%]',
+    'flex-row justify-between items-center p-2 px-4 bg-white rounded-2xl shadow-md w-[90%] mt-5',
 };
 
 export default PriceCard;
