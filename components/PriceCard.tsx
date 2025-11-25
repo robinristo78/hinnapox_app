@@ -10,7 +10,7 @@ interface PriceCardProps {
 
 const FuelColorsMap: Record<string, { textStyle: string; bgStyle: string }> = {
   '95': { textStyle: 'text-black', bgStyle: 'bg-green-400' },
-  '98': { textStyle: 'text-black', bgStyle: 'bg-green-400' },
+  '98': { textStyle: 'text-black', bgStyle: 'bg-orange-400' },
   D: { textStyle: 'text-white', bgStyle: 'bg-black' },
   EL: { textStyle: 'text-white', bgStyle: 'bg-blue-300' },
 };

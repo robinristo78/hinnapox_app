@@ -1,30 +1,25 @@
-import React, { useEffect, useState } from "react";
-import { View, Text, ActivityIndicator, Dimensions } from "react-native";
-import Svg, { Path, Circle } from "react-native-svg";
+import React, { useEffect, useState } from 'react';
+import { View, Text, ActivityIndicator, Dimensions } from 'react-native';
+import Svg, { Path, Circle } from 'react-native-svg';
 
 export default function ElectricityChart() {
   const [electricity, setElectricity] = useState<number[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const width = Dimensions.get("window").width - 60;
+  const width = Dimensions.get('window').width - 60;
   const height = 150;
 
   useEffect(() => {
     const load = async () => {
       try {
-        const url = "http://37.27.45.218:3020/api/prices/30d";
+        const url = 'http://37.27.45.218:3020/api/prices/30d';
         const res = await fetch(url);
         const json = await res.json();
 
-        const elec =
-          json.electricity ||
-          json.electricity_prices ||
-          json.el ||
-          json.data ||
-          [];
+        const elec = json.electricity || json.electricity_prices || json.el || json.data || [];
 
         if (!Array.isArray(elec) || elec.length === 0) {
-          console.log("No electricity array found");
+          console.log('No electricity array found');
           setLoading(false);
           return;
         }
@@ -36,7 +31,7 @@ export default function ElectricityChart() {
 
         setElectricity(values);
       } catch (err) {
-        console.log("FETCH ERROR:", err);
+        console.log('FETCH ERROR:', err);
       }
 
       setLoading(false);
@@ -46,7 +41,7 @@ export default function ElectricityChart() {
   }, []);
 
   const createPath = (values: number[]) => {
-    if (!values.length) return "";
+    if (!values.length) return '';
 
     const max = Math.max(...values);
     const min = Math.min(...values);
@@ -65,33 +60,24 @@ export default function ElectricityChart() {
   };
 
   return (
-    <View className="bg-white p-4 rounded-2xl shadow">
-      <Text className="text-gray-500 text-sm mb-3">
-        Viimase 30 päeva elekter 
-      </Text>
+    <View className="mt-6 px-6">
+      <Text className="mb-3 text-sm text-gray-500">Viimase 30 päeva elekter</Text>
 
       {loading ? (
         <ActivityIndicator />
       ) : electricity.length === 0 ? (
-        <Text style={{ color: "red" }}>No electricity data found</Text>
+        <Text style={{ color: 'red' }}>No electricity data found</Text>
       ) : (
-        <View>
+        <View className="rounded-2xl border-2 border-black/5 bg-white p-4  shadow-lg">
           <Svg width={width} height={height}>
-            <Path
-              d={createPath(electricity)}
-              stroke="#4F46E5"
-              strokeWidth={3}
-              fill="none"
-            />
+            <Path d={createPath(electricity)} stroke="#4F46E5" strokeWidth={3} fill="none" />
 
             <Circle
               cx={width}
               cy={
                 height -
-                ((electricity[electricity.length - 1] -
-                  Math.min(...electricity)) /
-                  (Math.max(...electricity) -
-                    Math.min(...electricity) || 1)) *
+                ((electricity[electricity.length - 1] - Math.min(...electricity)) /
+                  (Math.max(...electricity) - Math.min(...electricity) || 1)) *
                   height
               }
               r={5}
