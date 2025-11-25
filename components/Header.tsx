@@ -23,21 +23,16 @@ const Header = () => {
   }, [pathname]);
 
   return (
-    <View className="border-b border-gray-200 bg-white">
+    <View className="border-b-2 border-gray-100 bg-white">
       <View className="flex-row items-center justify-between px-4 py-3">
-        {/* Left-side placeholder */}
-        <View className="w-8" />
+        <Text className="text-center text-3xl font-bold">{title || 'Page Name'}</Text>
 
-        {/* Center title */}
-        <Text className="flex-1 text-center text-lg font-bold">{title || 'Page Name'}</Text>
-
-        {/* Right-side button */}
         <TouchableOpacity
           onPress={() => {
-            router.push('/settings'); //settings router
+            router.push('/settings');
           }}
-          className="h-8 w-8 items-center justify-center">
-          <SettingIcon fill="#9A8C8C" width={24} height={24} />
+          className="items-center justify-center">
+          <SettingIcon fill="#9A8C8C" width={36} height={36} />
         </TouchableOpacity>
       </View>
     </View>

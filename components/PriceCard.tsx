@@ -48,8 +48,8 @@ const PriceCard = ({ fuel }: PriceCardProps) => {
         <Text className="text-md text-gray-600">Hetkehind</Text>
       </View>
       <View
-        className={`flex-col justify-center rounded-lg ${fuelTypeBgStyle} min-w-20 items-center px-4 py-2`}>
-        <Text className={`m-0  text-5xl font-bold ${fuelTypeTextStyle}`}>{fuelType}</Text>
+        className={`flex-col justify-center rounded-lg ${fuelTypeBgStyle} min-w-[5.5rem] items-center px-4 py-2`}>
+        <Text className={`m-0 text-5xl font-bold ${fuelTypeTextStyle}`}>{fuelType}</Text>
       </View>
     </View>
   );

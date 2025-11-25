@@ -5,6 +5,7 @@ import NavBar from 'components/NavBar';
 import Header from 'components/Header';
 
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import LayoutWrapper from 'components/LayoutWrapper';
 
 export default function TabLayout() {
   const insets = useSafeAreaInsets();
@@ -13,7 +14,9 @@ export default function TabLayout() {
     <View style={{ flex: 1, paddingTop: insets.top, paddingBottom: insets.bottom }}>
       <>
         <Header />
-        <Slot />
+        <LayoutWrapper>
+          <Slot />
+        </LayoutWrapper>
         <NavBar />
       </>
     </View>
