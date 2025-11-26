@@ -2,8 +2,8 @@
   "language": "Language",
   "estonian": "Estonian",
   "english": "English",
-  "zh-CN": "Chinese (Simplified)",
-  "zh-TW": "Chinese (Traditional)",
+  "zh-CN": "Chinese Simplified",
+  "zh-TW": "Chinese Traditional",
   "style": "Style",
   "darkMode": "Dark Mode",
   "notifications": "Notifications",
@@ -26,5 +26,5 @@
   "maximum": "Maximum",
   "loading": "Loading prices...",
   "errorLoadingPrices": "Error loading price data",
-   "elecUnit": "¢/kWh"
+  "elecUnit": "¢/kWh"
 }
