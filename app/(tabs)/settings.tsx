@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, TouchableOpacity, View, Switch, ScrollView } from 'react-native';
+import { Text, TouchableOpacity, View, Switch } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from 'contexts/LanguageContext';
 
@@ -11,7 +11,7 @@ const Settings = () => {
   const [electricityNotification, setElectricityNotification] = useState(false);
 
   return (
-    <ScrollView className="flex-1  p-4">
+    <View className="px-6 pt-6">
       <Text className="mb-2 ml-1 text-gray-500">{t('language')}</Text>
       <View className="mb-6 flex-row gap-3">
         <TouchableOpacity
@@ -72,7 +72,7 @@ const Settings = () => {
           />
         </View>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 

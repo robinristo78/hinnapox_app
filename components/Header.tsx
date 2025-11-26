@@ -4,23 +4,25 @@ import { useRouter, usePathname } from 'expo-router';
 
 // Import SVG
 import SettingIcon from 'assets/icons/Setting.svg';
+import { useTranslation } from 'react-i18next';
 
 const pathTitles: { [key: string]: string } = {
-  '/': 'Kodu',
-  '/fuel': 'Kütuse Hinnad',
-  '/electricity': 'Elektri Hinnad',
-  '/map': 'Kaart',
-  '/settings': 'Seaded',
+  '/': 'homeTab',
+  '/fuel': 'petrolTab',
+  '/electricity': 'electricityTab',
+  '/map': 'mapTab',
+  '/settings': 'settingsTab',
 };
 
 const Header = () => {
   const [title, setTitle] = useState<string>('');
   const pathname = usePathname();
   const router = useRouter();
+  const { t } = useTranslation();
 
   useEffect(() => {
-    setTitle(pathTitles[pathname]);
-  }, [pathname]);
+    setTitle(t(pathTitles[pathname]));
+  }, [pathname, t]);
 
   return (
     <View className="border-b-2 border-gray-100 bg-white">

@@ -11,5 +11,10 @@
   "petrol95": "Bensiin 95",
   "petrol98": "Bensiin 98",
   "diesel": "Diisel",
-  "electricity": "Elekter"
+  "electricity": "Elekter",
+  "homeTab": "Kodu",
+  "settingsTab": "Seaded",
+  "petrolTab": "Kütus",
+  "electricityTab": "Elektri",
+  "mapTab": "Kaart"
 }

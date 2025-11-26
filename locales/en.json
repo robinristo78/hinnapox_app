@@ -11,5 +11,10 @@
   "petrol95": "Petrol 95",
   "petrol98": "Petrol 98",
   "diesel": "Diesel",
-  "electricity": "Electricity"
+  "electricity": "Electricity",
+  "homeTab": "Home",
+  "settingsTab": "Settings",
+  "petrolTab": "Petrol",
+  "electricityTab": "Electricity",
+  "mapTab": "Map"
 }
