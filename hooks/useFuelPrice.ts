@@ -91,7 +91,7 @@ export const useFuelPricesHistory = (fuelTypes: FuelType[] = ['95', '98', 'D']) 
     staleTime: Infinity,
     gcTime: Infinity,
   });
-};
+}; //Robin on nox
 
 const fetchElectricityHistory = async (): Promise<ChartData[]> => {
   const res = await fetch('https://hinnapox.marthaamer.ee/api/prices/30d');
