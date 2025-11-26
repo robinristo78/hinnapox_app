@@ -9,7 +9,7 @@
   "notifications": "Märguanne",
   "fuelPriceDropped": "Kütuse hind langes",
   "electricityPriceDropped": "Elektri hind langes",
-  "currentPrice": "Hetkehind",
+  "currentPrice": "Hetkehind | src: err.ee",
   "petrol95": "Bensiin 95",
   "petrol98": "Bensiin 98",
   "diesel": "Diisel",

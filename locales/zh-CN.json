@@ -9,7 +9,7 @@
     "notifications": "通知",
     "fuelPriceDropped": "燃油价格下降",
     "electricityPriceDropped": "电价下降",
-    "currentPrice": "当前价格",
+    "currentPrice": "当前价格 | src: err.ee",
     "petrol95": "95号汽油",
     "petrol98": "98号汽油",
     "diesel": "柴油",
