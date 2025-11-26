@@ -9,18 +9,28 @@
       "distribution": "internal",
       "android": {
         "buildType": "apk"
+      },
+      "ios": {
+        "buildType": "development"
       }
     },
     "preview": {
       "distribution": "internal",
       "android": {
         "buildType": "apk"
+      },
+      "ios": {
+        "buildType": "archive"
       }
     },
     "production": {
       "autoIncrement": true,
       "android": {
         "buildType": "apk"
+      },
+      "ios": {
+        "buildType": "archive",
+        "resourceClass": "m-medium"
       }
     }
   },

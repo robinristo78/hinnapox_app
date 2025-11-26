@@ -21,7 +21,10 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.hinnapox-app"
+      "bundleIdentifier": "com.anonymous.hinnapox-app",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false 
+      }
     },
     "android": {
       "adaptiveIcon": {
