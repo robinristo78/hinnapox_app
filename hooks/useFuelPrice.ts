@@ -63,7 +63,7 @@ export const useFuelPrice = (fuelType: FuelType) => {
 const fetchPricesHistory = async (
   fuelTypes: FuelType[] = ['95', '98', 'D']
 ): Promise<ChartData[]> => {
-  const res = await fetch('http://37.27.45.218:3020/api/prices/30d');
+  const res = await fetch('https://hinnapox.marthaamer.ee/api/prices/30d');
   const json = await res.json();
   const fuelData = json.gas || [];
 
@@ -94,7 +94,7 @@ export const useFuelPricesHistory = (fuelTypes: FuelType[] = ['95', '98', 'D']) 
 };
 
 const fetchElectricityHistory = async (): Promise<ChartData[]> => {
-  const res = await fetch('http://37.27.45.218:3020/api/prices/30d');
+  const res = await fetch('https://hinnapox.marthaamer.ee/api/prices/30d');
   const json = await res.json();
   const elec = json.electricity || json.electricity_prices || json.el || json.data || [];
 
