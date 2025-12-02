@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { View, ActivityIndicator } from 'react-native';
+import { View, ActivityIndicator, TouchableOpacity } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
+import { Ionicons } from '@expo/vector-icons';
 
 import stations from '../data/tanklad.json';
-import Filter from '../../components/Filter'; // import filter component
+import Filter from '../../components/Filter';
 
-type UserLocation = {
-  latitude: number;
-  longitude: number;
-} | null;
+type UserLocation = { latitude: number; longitude: number } | null;
 
 const BRAND_COLORS: Record<string, string> = {
   Alexela: 'blue',
@@ -27,8 +25,8 @@ const BRAND_COLORS: Record<string, string> = {
 const Map = () => {
   const [userLocation, setUserLocation] = useState<UserLocation>(null);
   const [selectedBrands, setSelectedBrands] = useState<string[]>(Object.keys(BRAND_COLORS));
+  const [showFilter, setShowFilter] = useState(false);
 
-  // Filter toggle function
   const toggleBrand = (brand: string) => {
     setSelectedBrands((prev) =>
       prev.includes(brand) ? prev.filter((b) => b !== brand) : [...prev, brand]
@@ -61,12 +59,36 @@ const Map = () => {
     );
   }
 
-  // Filter stations by selected brands
   const filteredStations = stations.filter((station) => selectedBrands.includes(station.brand_name));
 
   return (
     <View style={{ flex: 1 }}>
-      <Filter selectedBrands={selectedBrands} toggleBrand={toggleBrand} allBrands={allBrands} />
+      {/* Filter toggle button */}
+      <View
+        style={{
+          position: 'absolute',
+          top: 40,
+          right: 20,
+          zIndex: 20,
+          backgroundColor: 'white',
+          borderRadius: 25,
+          padding: 10,
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 2 },
+          shadowOpacity: 0.3,
+          shadowRadius: 4,
+          elevation: 5,
+        }}
+      >
+        <TouchableOpacity onPress={() => setShowFilter((prev) => !prev)}>
+          <Ionicons name="filter" size={24} color="black" />
+        </TouchableOpacity>
+      </View>
+
+      {/* Filter panel */}
+      {showFilter && <Filter selectedBrands={selectedBrands} toggleBrand={toggleBrand} allBrands={allBrands} />}
+
+      {/* Map */}
       <MapView
         style={{ flex: 1 }}
         showsUserLocation={true}
