@@ -26,5 +26,9 @@
     "maximum": "最大值",
     "loading": "正在加载价格...",
     "errorLoadingPrices": "加载价格数据出错",
-    "elecUnit": "¢/kWh"
+    "elecUnit": "¢/kWh",
+    "todayPrices": "今日价格",
+    "clearSelection": "清除选择",
+    "day": "第"
 }
+ 

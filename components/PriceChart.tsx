@@ -313,7 +313,7 @@ export default function PriceChart({ fuelTypes = ['95', 'D'] }: PriceChartProps)
                     ) : (
                       <>
                         <Text className="text-right text-sm text-gray-600">
-                          Day {selectedDataIndex + 1}
+                          {t('day')}{selectedDataIndex + 1}
                         </Text>
                         <Text className="text-right text-lg font-bold text-gray-900">
                           {price.toFixed(2)} €/L

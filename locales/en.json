@@ -28,5 +28,6 @@
   "errorLoadingPrices": "Error loading price data",
   "elecUnit": "¢/kWh",
   "todayPrices": "Today's Prices",
-  "clearSelection": "Clear Selection"
+  "clearSelection": "Clear Selection",
+  "day": "Day "
 }

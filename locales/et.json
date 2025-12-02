@@ -28,5 +28,6 @@
   "errorLoadingPrices": "Viga hinnaandmete laadimisel",
   "elecUnit": "s/kWh",
   "todayPrices": "Tänased Hinnad",
-  "clearSelection": "Tühjenda valik"
+  "clearSelection": "Tühjenda valik",
+  "day": "Päev "
 }
