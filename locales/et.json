@@ -29,5 +29,8 @@
   "elecUnit": "s/kWh",
   "todayPrices": "Tänased Hinnad",
   "clearSelection": "Tühjenda valik",
-  "day": "Päev "
+  "day": "Päev ",
+  "loadingLocation": "Asukoha laadimine...",
+  "retry": "Proovi uuesti",
+  "locationPermissionDenied": "Asukoha luba keeldutud"
 }

@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { View, ActivityIndicator, TouchableOpacity } from 'react-native';
+import React, { useEffect, useState, memo, useMemo } from 'react';
+import { View, ActivityIndicator, TouchableOpacity, Text } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
-import * as Location from 'expo-location';
 import { Ionicons } from '@expo/vector-icons';
+import { useTranslation } from 'react-i18next';
 
 import stations from '../data/tanklad.json';
 import Filter from '../../components/Filter';
-
-type UserLocation = { latitude: number; longitude: number } | null;
+import { useLocation } from '../../contexts/LocationContext';
 
 const BRAND_COLORS: Record<string, string> = {
   Alexela: 'blue',
@@ -15,15 +14,16 @@ const BRAND_COLORS: Record<string, string> = {
   Olerex: 'yellow',
   NESTE: 'green',
   Premium7: 'black',
-  'Метанстанция': 'white',
+  Метанстанция: 'white',
   Jetoil: 'pink',
   Terminal: 'darkgreen',
   Viada: 'orange',
   Astarte: 'purple',
 };
 
-const Map = () => {
-  const [userLocation, setUserLocation] = useState<UserLocation>(null);
+const Map = memo(() => {
+  const { t } = useTranslation();
+  const { location: userLocation, loading, error, requestLocation, hasPermission } = useLocation();
   const [selectedBrands, setSelectedBrands] = useState<string[]>(Object.keys(BRAND_COLORS));
   const [showFilter, setShowFilter] = useState(false);
 
@@ -35,35 +35,41 @@ const Map = () => {
 
   const allBrands = Array.from(new Set(stations.map((s) => s.brand_name)));
 
+  const filteredStations = useMemo(
+    () => stations.filter((station) => selectedBrands.includes(station.brand_name)),
+    [selectedBrands]
+  );
+
   useEffect(() => {
-    (async () => {
-      const { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') {
-        console.warn('Permission denied');
-        return;
-      }
+    if (!hasPermission && !loading) {
+      requestLocation();
+    }
+  }, [hasPermission, loading, requestLocation]);
 
-      const location = await Location.getCurrentPositionAsync({});
-      setUserLocation({
-        latitude: location.coords.latitude,
-        longitude: location.coords.longitude,
-      });
-    })();
-  }, []);
-
-  if (!userLocation) {
+  if (loading || !userLocation) {
     return (
-      <View className="flex-1 justify-center items-center bg-black">
-        <ActivityIndicator size="large" color="white" />
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size="large" color="#0000ff" />
+        <Text style={{ marginTop: 10, color: '#666' }}>{t('loadingLocation')}</Text>
       </View>
     );
   }
 
-  const filteredStations = stations.filter((station) => selectedBrands.includes(station.brand_name));
+  if (error && !userLocation) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20 }}>
+        <Text style={{ color: '#EF4444', textAlign: 'center', marginBottom: 20 }}>{error}</Text>
+        <TouchableOpacity
+          onPress={requestLocation}
+          style={{ backgroundColor: '#0000ff', padding: 10, borderRadius: 5 }}>
+          <Text style={{ color: 'white' }}>{t('retry')}</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
 
   return (
     <View style={{ flex: 1 }}>
-      {/* Filter toggle button */}
       <View
         style={{
           position: 'absolute',
@@ -78,17 +84,16 @@ const Map = () => {
           shadowOpacity: 0.3,
           shadowRadius: 4,
           elevation: 5,
-        }}
-      >
+        }}>
         <TouchableOpacity onPress={() => setShowFilter((prev) => !prev)}>
           <Ionicons name="filter" size={24} color="black" />
         </TouchableOpacity>
       </View>
 
-      {/* Filter panel */}
-      {showFilter && <Filter selectedBrands={selectedBrands} toggleBrand={toggleBrand} allBrands={allBrands} />}
+      {showFilter && (
+        <Filter selectedBrands={selectedBrands} toggleBrand={toggleBrand} allBrands={allBrands} />
+      )}
 
-      {/* Map */}
       <MapView
         style={{ flex: 1 }}
         showsUserLocation={true}
@@ -97,8 +102,7 @@ const Map = () => {
           longitude: userLocation.longitude,
           latitudeDelta: 0.5,
           longitudeDelta: 0.5,
-        }}
-      >
+        }}>
         {filteredStations.map((station) => (
           <Marker
             key={station.id}
@@ -111,6 +115,6 @@ const Map = () => {
       </MapView>
     </View>
   );
-};
+});
 
 export default Map;
