@@ -1,5 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { useColorScheme } from 'nativewind';
+
 
 type FilterProps = {
   selectedBrands: string[];
@@ -8,6 +10,10 @@ type FilterProps = {
 };
 
 const Filter: React.FC<FilterProps> = ({ selectedBrands, toggleBrand, allBrands }) => {
+  const { colorScheme } = useColorScheme();
+  const iconColor = colorScheme === 'dark' ? '#9A8C8C' : '#E0E0E0';
+
+
   return (
     <View
       style={{
@@ -16,9 +22,10 @@ const Filter: React.FC<FilterProps> = ({ selectedBrands, toggleBrand, allBrands 
         left: 0,
         right: 0,
         zIndex: 10,
-        backgroundColor: 'white',
+
         paddingVertical: 8,
       }}
+      className='bg-white dark:bg-theme-dark-secondary'
     >
       <ScrollView
         horizontal
@@ -36,7 +43,7 @@ const Filter: React.FC<FilterProps> = ({ selectedBrands, toggleBrand, allBrands 
                 paddingHorizontal: 14,
                 marginRight: 8,
                 borderRadius: 20,
-                backgroundColor: selected ? '#007AFF' : '#E0E0E0',
+                backgroundColor: selected ? '#007AFF' : iconColor,
               }}
             >
               <Text style={{ color: selected ? 'white' : 'black', fontWeight: '500' }}>{brand}</Text>

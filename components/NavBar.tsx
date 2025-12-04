@@ -38,7 +38,7 @@ export default function NavBar() {
         const isActive = pathname === route;
         return (
           <TouchableOpacity key={key} onPress={() => router.push(route)} className="items-center">
-            <Icon width={44} height={44} fill={isActive ? '#64AEF0' : iconColor} />
+            <Icon width={44} height={44} fill={isActive ? '#007AFF' : iconColor} />
           </TouchableOpacity>
         );
       })}
