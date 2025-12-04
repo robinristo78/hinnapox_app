@@ -118,7 +118,7 @@ export default function PriceChart({ fuelTypes = ['95', 'D'] }: PriceChartProps)
 
   return (
     <View className="mt-6 px-5">
-      <Text className="mb-2 text-center text-xl font-semibold text-gray-700 dark:text-white">
+      <Text className="mb-4 text-center text-2xl font-semibold text-gray-700 dark:text-white">
         {hasElectricity ? t('todayPrices') : `${t('priceComparison')} - ${t('last30Days')}`}
       </Text>
 
