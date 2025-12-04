@@ -5,6 +5,11 @@
     "version": "1.0.0",
     "scheme": "hinnapox",
     "web": {
+      "bundler": "metro",
+      "output": "static",
+      "router": {
+        "baseUrl": "/hinnapox_app/"
+      },
       "favicon": "./assets/icon.png"
     },
     "experiments": {
