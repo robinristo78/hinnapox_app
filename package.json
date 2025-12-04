@@ -9,7 +9,7 @@
     "lint": "eslint \"**/*.{js,jsx,ts,tsx}\" && prettier -c \"**/*.{js,jsx,ts,tsx,json}\"",
     "format": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix && prettier \"**/*.{js,jsx,ts,tsx,json}\" --write",
     "web": "expo start --web",
-    "export": "expo export -p web --output-dir web-build --no-jekyll",
+    "export": "expo export -p web --output-dir web-build",
     "predeploy": "npm run export",
     "deploy": "gh-pages -d web-build -m 'Deploying Expo Web build to GitHub Pages'"
   },
