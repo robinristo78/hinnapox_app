@@ -136,62 +136,65 @@ const MapScreen = memo(() => {
   }
 
   return (
-    <View style={{ flex: 1 }}>
-      
-      {/* City Search Component */}
+    <>
       <CitySearch
         cityList={allCities}
         onSelectCity={handleSelectCity}
-        placeholder={t('Otsi linna')}
+        placeholder={t('SearchCity')}
       />
+      <View style={{ flex: 1 }}>
+        
+        
 
-      {/* Filter Button */}
-      <View
-        className="
-          absolute top-10 right-5 z-20 
-          bg-white dark:bg-black 
-          rounded-full p-2.5 
-          shadow-lg elevation-5
-        "
-      >
-        <TouchableOpacity onPress={() => setShowFilter((prev) => !prev)}>
-          <Ionicons 
-            name="filter" 
-            size={24} 
-            color={iconColor} 
-          />
-        </TouchableOpacity>
+        {/* Filter Button */}
+        <View
+          className="
+            absolute left-5 z-20 
+            bg-white dark:bg-black 
+            rounded-full p-2.5 
+            shadow-lg elevation-5
+          "
+          style={{ top: showFilter ? 50 : 10 }}
+        >
+          <TouchableOpacity onPress={() => setShowFilter((prev) => !prev)}>
+            <Ionicons 
+              name="filter" 
+              size={24} 
+              color={iconColor} 
+            />
+          </TouchableOpacity>
+        </View>
+
+        {/* Filter Modal/List */}
+        {showFilter && (
+          <Filter selectedBrands={selectedBrands} toggleBrand={toggleBrand} allBrands={allBrands} />
+        )}
+
+        {/* Map */}
+        <MapView
+          ref={mapRef}
+          style={{ flex: 1 }}
+          showsUserLocation={true}
+          customMapStyle={mapStyle}
+          initialRegion={{
+            latitude: userLocation.latitude,
+            longitude: userLocation.longitude,
+            latitudeDelta: 0.5,
+            longitudeDelta: 0.5,
+          }}>
+          {filteredStations.map((station) => (
+            <Marker
+              key={station.id}
+              coordinate={{ latitude: station.lat, longitude: station.lon }}
+              title={`${station.brand_name} - ${station.name}`}
+              description={`${station.address}, ${station.city}`}
+              pinColor={BRAND_COLORS[station.brand_name] || 'gray'}
+              tracksViewChanges={false}
+            />
+          ))}
+        </MapView>
       </View>
-
-      {/* Filter Modal/List */}
-      {showFilter && (
-        <Filter selectedBrands={selectedBrands} toggleBrand={toggleBrand} allBrands={allBrands} />
-      )}
-
-      {/* Map */}
-      <MapView
-        ref={mapRef}
-        style={{ flex: 1 }}
-        showsUserLocation={true}
-        customMapStyle={mapStyle}
-        initialRegion={{
-          latitude: userLocation.latitude,
-          longitude: userLocation.longitude,
-          latitudeDelta: 0.5,
-          longitudeDelta: 0.5,
-        }}>
-        {filteredStations.map((station) => (
-          <Marker
-            key={station.id}
-            coordinate={{ latitude: station.lat, longitude: station.lon }}
-            title={`${station.brand_name} - ${station.name}`}
-            description={`${station.address}, ${station.city}`}
-            pinColor={BRAND_COLORS[station.brand_name] || 'gray'}
-            tracksViewChanges={false}
-          />
-        ))}
-      </MapView>
-    </View>
+    </>
   );
 });
 

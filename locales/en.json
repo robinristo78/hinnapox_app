@@ -32,5 +32,6 @@
   "day": "Date ",
   "loadingLocation": "Loading location...",
   "retry": "Retry",
-  "locationPermissionDenied": "Location permission denied"
+  "locationPermissionDenied": "Location permission denied",
+  "SearchCity": "Search City"
 }

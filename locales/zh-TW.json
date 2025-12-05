@@ -32,5 +32,6 @@
   "day": "第",
   "loadingLocation": "正在載入位置...",
   "retry": "重試",
-  "locationPermissionDenied": "位置權限被拒絕"
+  "locationPermissionDenied": "位置權限被拒絕",
+  "SearchCity": "搜尋城市"
 }

@@ -93,7 +93,7 @@ const MapScreen = () => {
       <CitySearch
           cityList={allCities}
           onSelectCity={handleSelectCity}
-          placeholder={t('Otsi linna')}
+          placeholder={t('SearchCity')}
       />
     <View style={{ flex: 1, backgroundColor: bgColor, position: 'relative' }}>
       

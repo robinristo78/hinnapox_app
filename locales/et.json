@@ -32,5 +32,6 @@
   "day": "Kuupäev ",
   "loadingLocation": "Asukoha laadimine...",
   "retry": "Proovi uuesti",
-  "locationPermissionDenied": "Asukoha luba keeldutud"
+  "locationPermissionDenied": "Asukoha luba keeldutud",
+  "SearchCity": "Otsi linna"
 }
